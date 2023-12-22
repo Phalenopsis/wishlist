@@ -27,10 +27,14 @@ class WishList
     #[ORM\OneToMany(mappedBy: 'wish_list', targetEntity: Proposition::class)]
     private Collection $propositions;
 
+    #[ORM\OneToMany(mappedBy: 'whishList', targetEntity: Label::class)]
+    private Collection $labels;
+
     public function __construct()
     {
         $this->contributors = new ArrayCollection();
         $this->propositions = new ArrayCollection();
+        $this->labels = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -110,6 +114,36 @@ class WishList
             // set the owning side to null (unless already changed)
             if ($proposition->getWishList() === $this) {
                 $proposition->setWishList(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Label>
+     */
+    public function getLabels(): Collection
+    {
+        return $this->labels;
+    }
+
+    public function addLabel(Label $label): static
+    {
+        if (!$this->labels->contains($label)) {
+            $this->labels->add($label);
+            $label->setWhishList($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLabel(Label $label): static
+    {
+        if ($this->labels->removeElement($label)) {
+            // set the owning side to null (unless already changed)
+            if ($label->getWhishList() === $this) {
+                $label->setWhishList(null);
             }
         }
 
