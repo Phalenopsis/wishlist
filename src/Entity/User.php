@@ -30,10 +30,14 @@ class User
     #[ORM\ManyToMany(targetEntity: WishList::class, mappedBy: 'contributors')]
     private Collection $wishListsContribute;
 
+    #[ORM\OneToMany(mappedBy: 'creator', targetEntity: Proposition::class)]
+    private Collection $propositions;
+
     public function __construct()
     {
         $this->wishLists = new ArrayCollection();
         $this->wishListsContribute = new ArrayCollection();
+        $this->propositions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -129,6 +133,36 @@ class User
     {
         if ($this->wishListsContribute->removeElement($wishListsContribute)) {
             $wishListsContribute->removeContributor($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Proposition>
+     */
+    public function getPropositions(): Collection
+    {
+        return $this->propositions;
+    }
+
+    public function addProposition(Proposition $proposition): static
+    {
+        if (!$this->propositions->contains($proposition)) {
+            $this->propositions->add($proposition);
+            $proposition->setCreator($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProposition(Proposition $proposition): static
+    {
+        if ($this->propositions->removeElement($proposition)) {
+            // set the owning side to null (unless already changed)
+            if ($proposition->getCreator() === $this) {
+                $proposition->setCreator(null);
+            }
         }
 
         return $this;
