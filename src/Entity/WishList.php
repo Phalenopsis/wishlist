@@ -30,6 +30,9 @@ class WishList
     #[ORM\OneToMany(mappedBy: 'whishList', targetEntity: Label::class)]
     private Collection $labels;
 
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
+
     public function __construct()
     {
         $this->contributors = new ArrayCollection();
@@ -146,6 +149,18 @@ class WishList
                 $label->setWhishList(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
 
         return $this;
     }
