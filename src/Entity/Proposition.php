@@ -31,6 +31,9 @@ class Proposition
     #[ORM\ManyToMany(targetEntity: Label::class, mappedBy: 'propositions')]
     private Collection $labels;
 
+    #[ORM\Column]
+    private ?bool $done = null;
+
     public function __construct()
     {
         $this->labels = new ArrayCollection();
@@ -112,6 +115,18 @@ class Proposition
         if ($this->labels->removeElement($label)) {
             $label->removeProposition($this);
         }
+
+        return $this;
+    }
+
+    public function isDone(): ?bool
+    {
+        return $this->done;
+    }
+
+    public function setDone(bool $done): static
+    {
+        $this->done = $done;
 
         return $this;
     }
