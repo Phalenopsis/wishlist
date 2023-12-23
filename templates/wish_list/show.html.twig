@@ -6,6 +6,8 @@
 
     <div>
         <h1>{{ wish_list.name }}</h1>
+        <h2>Tirage au sort</h2>
+        <a href="{{ path('app_random_proposition', {slug: wish_list.slug}) }}">Effectuer un tirage au sort</a>
         <h2>Etiquettes</h2>
         {% if wish_list.labels is not empty %}
             <ul>
