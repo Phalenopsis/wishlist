@@ -6,6 +6,7 @@ use App\Entity\WishList;
 use App\Form\AddContributorType;
 use App\Form\WishListType;
 use App\Repository\WishListRepository;
+use App\Service\RandomPropositionService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -102,6 +103,18 @@ class WishListController extends AbstractController
         return $this->render('wish_list/addFriend.html.twig', [
             'wish_list' => $wishList,
             'form' => $form,
+        ]);
+    }
+
+    #[Route('/{slug}/random', name: 'app_random_proposition')]
+    public function random(WishList $wishList, RandomPropositionService $randomService, EntityManagerInterface $entityManager): Response
+    {
+        $proposition = $randomService->getRandomProposition($wishList);
+        $proposition->setDone(true);
+        $entityManager->flush();
+
+        return $this->render('wish_list/random.html.twig', [
+            'proposition' => $proposition,
         ]);
     }
 }
