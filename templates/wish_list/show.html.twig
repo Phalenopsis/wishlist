@@ -20,7 +20,29 @@
         <hr>
 
         <h2>Voeux</h2>
+            {% if wish_list.propositions is not empty %}
+                <ul>
+                    {% for proposition in wish_list.propositions %}
+                        <li>
+                            <ul>
+                                <li>{{ proposition.content }}</li>
+                                <li>{{ proposition.difficulty }}</li>
+                                {% if proposition.labels is not empty %}
+                                <li>
+                                    {% for label in proposition.labels %}
+                                        <span style="background-color: {{ label.color }}">{{ label.name }}</span>
+                                    {% endfor %}
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                Cette liste n'a pas encore d'invité
+            {% endif %}
 
+        <a href="{{ path('app_proposition_new', {slug: wish_list.slug}) }}">Créer une nouvelle proposition</a>
         <hr>
 
         <h2>Invités</h2>
