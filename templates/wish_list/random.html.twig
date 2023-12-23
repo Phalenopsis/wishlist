@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends '../base.html.twig' %}
 
 {% block title %}Proposition{% endblock %}
 
@@ -10,8 +10,8 @@
 
             <h2>Difficulty</h2>
             <div class="star">
-                {% for loop in 0..{{ proposition.difficulty }} %}
-                    {% include '_star.html.twig' %}
+                {% for loop in 0..proposition.difficulty %}
+                    {% include '../_star.html.twig' %}
                 {% endfor %}
             </div>
 

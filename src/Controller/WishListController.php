@@ -97,7 +97,7 @@ class WishListController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_user', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_wish_list_show', ['slug' => $wishList->getSlug()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('wish_list/addFriend.html.twig', [

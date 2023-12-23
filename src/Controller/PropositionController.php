@@ -40,7 +40,7 @@ class PropositionController extends AbstractController
             $entityManager->persist($proposition);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_user', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_wish_list_show', ['slug' => $wishList->getSlug()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('proposition/new.html.twig', [
