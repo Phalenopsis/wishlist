@@ -14,18 +14,35 @@ class WishListType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name')
-            ->add('creator', EntityType::class, [
-                'class' => User::class,
-'choice_label' => 'id',
-            ])
-            ->add('contributors', EntityType::class, [
-                'class' => User::class,
-'choice_label' => 'id',
-'multiple' => true,
-            ])
-        ;
+            ->add('name');
     }
+
+//    public function buildForm(FormBuilderInterface $builder, array $options): void
+//    {
+//        $builder
+//            ->add('name')
+//            ->add('creator', EntityType::class, [
+//                'class' => User::class,
+//'choice_label' => 'id',
+//            ])
+//            ->add('contributors', EntityType::class, [
+//                'class' => User::class,
+//'choice_label' => 'id',
+//'multiple' => true,
+//            ])
+//        ;
+//    }
+
+//    public function addFriendForm(FormBuilderInterface $builder, array $options): void
+//    {
+//        $builder
+//            ->add('contributors', EntityType::class, [
+//                'class' => User::class,
+//                'choice_label' => 'id',
+//                'multiple' => true,
+//            ])
+//        ;
+//    }
 
     public function configureOptions(OptionsResolver $resolver): void
     {

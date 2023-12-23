@@ -24,6 +24,9 @@ class Label
     #[ORM\ManyToMany(targetEntity: Proposition::class, inversedBy: 'labels')]
     private Collection $propositions;
 
+    #[ORM\Column(length: 10, nullable: true)]
+    private ?string $color = null;
+
     public function __construct()
     {
         $this->propositions = new ArrayCollection();
@@ -78,6 +81,18 @@ class Label
     public function removeProposition(Proposition $proposition): static
     {
         $this->propositions->removeElement($proposition);
+
+        return $this;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(?string $color): static
+    {
+        $this->color = $color;
 
         return $this;
     }

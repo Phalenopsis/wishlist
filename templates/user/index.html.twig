@@ -9,9 +9,13 @@
     <h1>Hello {{ app.user.username }}!</h1>
 
     {% if app.user.wishLists is empty %}
-    <p>Créer votre première liste de souhaits</p>
+        <p><a href="{{ path('app_wish_list_new') }}">Créer votre première liste de souhaits</a></p>
     {%  else %}
-    <p>afficher les listes existantes</p>
+        <ul>
+            {% for wishlist in app.user.wishlists %}
+                <li><a href="{{ path('app_wish_list_show', {slug: wishlist.slug}) }}">{{ wishlist.name }}</a></li>
+            {% endfor %}
+        </ul>
     {% endif %}
 
 

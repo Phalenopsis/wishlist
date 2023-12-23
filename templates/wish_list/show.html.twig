@@ -3,14 +3,47 @@
 {% block title %}WishList{% endblock %}
 
 {% block body %}
-    <h1>WishList</h1>
 
+    <div>
+        <h1>{{ wish_list.name }}</h1>
+        <h2>Etiquettes</h2>
+        {% if wish_list.labels is not empty %}
+            <ul>
+            {% for label in wish_list.labels %}
+                <li style="background-color: {{ label.color }}">{{ label.name }}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            Cette liste n'a pas encore d'étiquette
+        {% endif %}
+        <a href="{{ path('app_label_new', {slug: wish_list.slug}) }}">Créer une nouvelle étiquette</a>
+        <hr>
+
+        <h2>Voeux</h2>
+
+        <hr>
+
+        <h2>Invités</h2>
+            {% if wish_list.contributors is not empty %}
+                <ul>
+                    {% for contributor in wish_list.contributors %}
+                        <li>{{ contributor.username }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                Cette liste n'a pas encore d'invité
+            {% endif %}
+        <a href="{{ path('app_wish_list_addfriend', {slug: wish_list.slug}) }}">Ajouter un invité</a>
+        <hr>
+
+    </div>
     <table class="table">
         <tbody>
 
             <tr>
                 <th>Name</th>
                 <td>{{ wish_list.name }}</td>
+                <td></td>
             </tr>
 
         </tbody>
