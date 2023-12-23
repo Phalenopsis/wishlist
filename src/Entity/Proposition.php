@@ -32,7 +32,7 @@ class Proposition
     private Collection $labels;
 
     #[ORM\Column]
-    private ?bool $done = null;
+    private ?bool $done = false;
 
     public function __construct()
     {

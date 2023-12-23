@@ -31,7 +31,6 @@ class PropositionController extends AbstractController
         EntityManagerInterface $entityManager): Response
     {
         $proposition = new Proposition();
-        $proposition->setDone(false);
         $proposition->setWishList($wishList);
         $proposition->setCreator($this->getUser());
         $form = $this->createForm(PropositionType::class, $proposition);
