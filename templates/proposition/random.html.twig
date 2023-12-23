@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Proposition{% endblock %}
+
+{% block body %}
+    <h1>Tirage au sort</h1>
+
+    <h2>Et la proposition tirée au sort est :</h2>
+    <p><strong>{{ proposition.content }}</strong></p>
+
+            <h2>Difficulty</h2>
+            <div class="star">
+                {% for loop in 0..{{ proposition.difficulty }} %}
+                    {% include '_star.html.twig' %}
+                {% endfor %}
+            </div>
+
+
+    <a href="{{ path('app_whish_list_show', {slug: proposition.wish_list.slug}) }}">Retour à la liste</a>
+
+    <a href="{{ path('app_user') }}">Retour à l'utilisateur</a>
+
+{% endblock %}
