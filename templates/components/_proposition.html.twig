@@ -1,0 +1,22 @@
+
+<div class="card card-content
+{% if proposition.done %}
+            done
+            {% else %}
+            not-done
+        {% endif %}
+">
+    <ul>
+        <li>{{ proposition.content }}</li>
+        <li>
+            {% if proposition.labels is not empty %}
+                    {% for label in proposition.labels %}
+                        {% include 'components/_label.html.twig' %}
+                    {% endfor %}
+            {% endif %}
+        </li>
+        <li>{% include 'components/_difficulty.html.twig' %}</li>
+
+
+    </ul>
+</div>

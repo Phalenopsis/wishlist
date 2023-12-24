@@ -1,0 +1,9 @@
+<div class="star">
+    {% for i in 1..5 %}
+        {% if i in 1..(proposition.difficulty) %}
+            <span class="yellow">{% include '_star_filled.html.twig' %}</span>
+        {% else %}
+            <span class="yellow">{% include '_star.html.twig' %}</span>
+        {% endif %}
+    {% endfor %}
+</div>
