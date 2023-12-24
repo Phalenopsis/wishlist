@@ -7,9 +7,9 @@
 
    {% include 'components/_proposition.html.twig' %}
 
-    <a href="{{ path('app_proposition_changestate', {id: proposition.id}) }}">Changer l'état</a>
+    <p><a href="{{ path('app_proposition_changestate', {id: proposition.id}) }}" class="button">Changer l'état</a></p>
 
-    <a href="{{ path('app_wish_list_show', {slug: proposition.wishlist.slug}) }}">{{ proposition.wishlist.name }}</a>
+    <p><a href="{{ path('app_wish_list_show', {slug: proposition.wishlist.slug}) }}" class="button">{{ proposition.wishlist.name }}</a></p>
 
 
 {#    <a href="{{ path('app_proposition_edit', {'id': proposition.id}) }}">edit</a>#}
