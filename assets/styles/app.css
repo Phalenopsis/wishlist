@@ -50,13 +50,13 @@ section.card{
     border-radius: 10px;
     padding: 1rem;
 }
-section.card ul {
+.card ul{
     list-style: none;
 }
-section.card>ul{
+card>ul{
     margin-bottom: 0.75rem;
 }
-section.card>ul>li{
+.card>ul>li{
     margin-bottom: 0.25rem;
 }
 section a.button,
@@ -75,6 +75,7 @@ section.card a.button:visited
 div.card{
     border: 1px solid black;
     border-radius: 5px;
+    color: black;
 }
 .card-contenair{
     display: flex;
@@ -99,4 +100,11 @@ div.card{
 }
 .card-content>ul>li{
     margin-bottom: 0.5rem;
+}
+a.card-link,
+a.card-link:hover,
+a.card-link:active,
+a.card-link:visited
+{
+    text-decoration: none;
 }
