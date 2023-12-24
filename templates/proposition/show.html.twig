@@ -5,26 +5,14 @@
 {% block body %}
     <h1>Proposition</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ proposition.id }}</td>
-            </tr>
-            <tr>
-                <th>Content</th>
-                <td>{{ proposition.content }}</td>
-            </tr>
-            <tr>
-                <th>Difficulty</th>
-                <td>{{ proposition.difficulty }}</td>
-            </tr>
-        </tbody>
-    </table>
+   {% include 'components/_proposition.html.twig' %}
 
-    <a href="{{ path('app_proposition_index') }}">back to list</a>
+    <a href="{{ path('app_proposition_changestate', {id: proposition.id}) }}">Changer l'état</a>
 
-    <a href="{{ path('app_proposition_edit', {'id': proposition.id}) }}">edit</a>
+    <a href="{{ path('app_wish_list_show', {slug: proposition.wishlist.slug}) }}">{{ proposition.wishlist.name }}</a>
 
-    {{ include('proposition/_delete_form.html.twig') }}
+
+{#    <a href="{{ path('app_proposition_edit', {'id': proposition.id}) }}">edit</a>#}
+
+{#    {{ include('proposition/_delete_form.html.twig') }}#}
 {% endblock %}
