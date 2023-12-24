@@ -35,8 +35,12 @@
                                         <span style="background-color: {{ label.color }}">{{ label.name }}</span>
                                     {% endfor %}
                                 </li>
-                                    <li>{{ proposition.done }}</li>
+
                                 {% endif %}
+                                <li>{% if proposition.done %}
+                                        plop
+                                    {% endif %}
+                                </li>
                             </ul>
                         </li>
                     {% endfor %}
@@ -74,9 +78,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_wish_list_index') }}">back to list</a>
+    <a href="{{ path('app_user') }}">back to user</a><br>
 
-    <a href="{{ path('app_wish_list_edit', {'slug': wish_list.slug}) }}">edit</a>
+    <a href="{{ path('app_home') }}">home</a>
 
-    {{ include('wish_list/_delete_form.html.twig') }}
+
 {% endblock %}

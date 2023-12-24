@@ -1,4 +1,4 @@
-{% extends '../base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}Proposition{% endblock %}
 
@@ -10,14 +10,18 @@
 
             <h2>Difficulty</h2>
             <div class="star">
-                {% for loop in 0..proposition.difficulty %}
-                    {% include '../_star.html.twig' %}
+                {% for i in 1..5 %}
+                    {% if i in 1..(proposition.difficulty) %}
+                        <span class="yellow">{% include '_star_filled.html.twig' %}</span>
+                    {% else %}
+                        <span class="yellow">{% include '_star.html.twig' %}</span>
+                    {% endif %}
                 {% endfor %}
             </div>
 
 
-    <a href="{{ path('app_whish_list_show', {slug: proposition.wish_list.slug}) }}">Retour à la liste</a>
-
+    <a href="{{ path('app_wish_list_show', {slug: proposition.WishList.slug}) }}">Retour à la liste</a>
+{{ dump(proposition) }}
     <a href="{{ path('app_user') }}">Retour à l'utilisateur</a>
 
 {% endblock %}
