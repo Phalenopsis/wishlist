@@ -1,6 +1,6 @@
 <nav>
     {% if is_granted("ROLE_USER") %}
-        <a href="/logout">{{ logout }}</a>
+        <a href="/logout">{% include 'svg/_user_off.html.twig' %}</a>
     {% else %}
         <a href="{{ path('app_login') }}">{% include 'svg/_user.html.twig' %}</a>
     {% endif %}
