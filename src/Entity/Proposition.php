@@ -32,7 +32,7 @@ class Proposition
     private Collection $labels;
 
     #[ORM\Column]
-    private ?bool $done = false;
+    private ?string $state = null;
 
     public function __construct()
     {
@@ -119,14 +119,14 @@ class Proposition
         return $this;
     }
 
-    public function isDone(): ?bool
+    public function getState(): ?string
     {
-        return $this->done;
+        return $this->state;
     }
 
-    public function setDone(bool $done): static
+    public function setState(string $state): static
     {
-        $this->done = $done;
+        $this->state = $state;
 
         return $this;
     }
