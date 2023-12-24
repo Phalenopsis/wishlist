@@ -1,5 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Voces");
+:root{
+    --navbar-height: 40px;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Voces", sans-serif;
+}
 body {
     background-color: skyblue;
+    background: linear-gradient(180deg, #c938dc, #ecf802);
+    background-size: cover;
+
+}
+nav{
+    height: var(--navbar-height);
+    background: linear-gradient(#e66465, #9198e5);
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1rem;
+}
+main{
+    min-height: calc(100vh - var(--navbar-height));
+    margin: 0 20%;
 }
 .yellow{
     color: yellow;
@@ -7,4 +31,89 @@ body {
 nav svg {
     width: 32px;
     height: 32px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
+form input[type=text], form input[type=password]{
+    width: 15rem;
+    border-radius: 10px;
+    padding-left: 10px;
+    height: 2rem;
+}
+form button{
+    width: 5rem;
+    margin: 1rem auto;
+    border-radius: 10px;
+}
+form input[type=text],
+form input[type=password]
+{
+    margin: 1rem;
+}
+form label{
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+h1 {
+    margin: 1rem;
+}
+h2 {
+    margin: 0.75rem;
+}
+section{
+    margin-bottom: 1px;
+}
+.label{
+    border: 1px solid grey;
+}
+section.card{
+    border: 2px solid pink;
+    margin: 1rem 0;
+    border-radius: 10px;
+    padding: 1rem;
+}
+section.card ul {
+    list-style: none;
+}
+section.card>ul{
+    margin-bottom: 0.75rem;
+}
+section.card>ul>li{
+    margin-bottom: 0.25rem;
+}
+section.card a.button,
+section.card a.button:hover,
+section.card a.button:active,
+section.card a.button:visited
+{
+    display: inline-block;
+    background: #9198e5;
+    border: 1px solid #5B21B6;
+    padding: 0.25rem;
+    text-decoration: none;
+    border-radius: 5px;
+}
+div.card{
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.card-contenair{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.card-content{
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+}
+.card.done{
+    background: linear-gradient(red, darkred);
+}
+.card.not-done{
+    background: linear-gradient(greenyellow, darkgreen);
+}
+.card-content>ul>li{
+    margin-bottom: 0.5rem;
 }
