@@ -42,7 +42,7 @@
                 Cette liste n'a pas encore de proposition.
             {% endif %}
 
-        <a href="{{ path('app_proposition_new', {slug: wish_list.slug}) }}">Créer une nouvelle proposition</a>
+        <p><a href="{{ path('app_proposition_new', {slug: wish_list.slug}) }}" class="button">Créer une nouvelle proposition</a></p>
     </section>
 
     <section  class="card">
@@ -56,16 +56,16 @@
             {% else %}
                 Cette liste n'a pas encore d'invité
             {% endif %}
-        <a href="{{ path('app_wish_list_addfriend', {slug: wish_list.slug}) }}">Ajouter un invité</a>
+        <p><a href="{{ path('app_wish_list_addfriend', {slug: wish_list.slug}) }}" class="button">Ajouter un invité</a></p>
 
     </section>
 
 
 
 
-    <a href="{{ path('app_user') }}">back to user</a><br>
+    <p><a href="{{ path('app_user') }}" class="button">back to user</a></p>
 
-    <a href="{{ path('app_home') }}">home</a>
+    <p><a href="{{ path('app_home') }}" class="button">home</a></p>
 
 
 {% endblock %}
