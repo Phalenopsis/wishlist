@@ -7,7 +7,7 @@
 
 <div>
     <h1>Hello {{ app.user.username }}!</h1>
-    <section>
+    <section class="card">
         <h2>Vos listes</h2>
         {% if app.user.wishLists is empty %}
             <p><a href="{{ path('app_wish_list_new') }}" class="button">Créer votre première liste de souhaits</a></p>
@@ -20,7 +20,7 @@
         {% endif %}
     </section>
 
-    <section>
+    <section class="card">
         <h2>Les listes où vous avez été invité</h2>
         <ul>
             {% for wishlist in app.user.wishListsContribute %}
