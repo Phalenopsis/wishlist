@@ -10,7 +10,7 @@
     <section>
         <h2>Vos listes</h2>
         {% if app.user.wishLists is empty %}
-            <p><a href="{{ path('app_wish_list_new') }}">Créer votre première liste de souhaits</a></p>
+            <p><a href="{{ path('app_wish_list_new') }}" class="button">Créer votre première liste de souhaits</a></p>
         {%  else %}
             <ul>
                 {% for wishlist in app.user.wishlists %}

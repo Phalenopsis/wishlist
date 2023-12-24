@@ -59,6 +59,7 @@ section.card>ul{
 section.card>ul>li{
     margin-bottom: 0.25rem;
 }
+section a.button,
 section.card a.button,
 section.card a.button:hover,
 section.card a.button:active,
