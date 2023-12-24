@@ -1,0 +1,43 @@
+form{
+    display: flex;
+    flex-direction: column;
+}
+form input[type=text], form input[type=password]{
+    width: 15rem;
+    border-radius: 10px;
+    padding-left: 10px;
+    height: 2rem;
+}
+form button{
+    width: 5rem;
+    margin: 1rem auto;
+    border-radius: 10px;
+}
+form input[type=text],
+form input[type=password]
+{
+    margin: 1rem;
+}
+
+form label{
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+form textarea{
+    width: 100%;
+    height: 4rem;
+    padding: 0.25rem;
+}
+form div#proposition_labels{
+    display: grid;
+    grid-template-columns: 15px 1fr;
+    grid-auto-rows: 1.5rem;
+}
+form div#proposition_labels input[type=checkbox]{
+    width: 1rem;
+    height: 1rem;
+    margin-bottom: 4px;
+}
+form div#proposition_labels * {
+    align-self: flex-end;
+}
