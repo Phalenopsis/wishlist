@@ -31,7 +31,7 @@
                     {% set counter = 0 %}
                     {% for proposition in wish_list.propositions %}
                             {% if proposition.creator == app.user %}
-                                {% include 'components/_proposition.html.twig' %}
+                                <a href="{{ path('app_proposition_show', {id: proposition.id}) }}" class="card-link">{% include 'components/_proposition.html.twig' %}</a>
                             {% else %}
                                 {% set counter = counter + 1 %}
                             {% endif %}
