@@ -11,7 +11,7 @@ class RandomPropositionService
     {
         $choices = [];
         foreach ($wishList->getPropositions() as $proposition){
-            if(!$proposition->isDone()){
+            if($proposition->getState() === 'Created'){
                 $choices[] = $proposition;
             }
         }
