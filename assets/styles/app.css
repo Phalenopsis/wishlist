@@ -43,6 +43,8 @@ section{
 }
 .label{
     border: 1px solid grey;
+    display: inline-block;
+    padding: 0 2px;
 }
 section.card{
     border: 2px solid pink;
@@ -59,11 +61,10 @@ card>ul{
 .card>ul>li{
     margin-bottom: 0.25rem;
 }
-section a.button,
-section.card a.button,
-section.card a.button:hover,
-section.card a.button:active,
-section.card a.button:visited
+a.button,
+a.button:hover,
+a.button:active,
+a.button:visited
 {
     display: inline-block;
     background: #9198e5;
