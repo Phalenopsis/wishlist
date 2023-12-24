@@ -7,19 +7,28 @@
 
 <div>
     <h1>Hello {{ app.user.username }}!</h1>
+    <section>
+        <h2>Vos listes</h2>
+        {% if app.user.wishLists is empty %}
+            <p><a href="{{ path('app_wish_list_new') }}">Créer votre première liste de souhaits</a></p>
+        {%  else %}
+            <ul>
+                {% for wishlist in app.user.wishlists %}
+                    <li><a href="{{ path('app_wish_list_show', {slug: wishlist.slug}) }}">{{ wishlist.name }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </section>
 
-    {% if app.user.wishLists is empty %}
-        <p><a href="{{ path('app_wish_list_new') }}">Créer votre première liste de souhaits</a></p>
-    {%  else %}
+    <section>
+        <h2>Les listes où vous avez été invité</h2>
         <ul>
-            {% for wishlist in app.user.wishlists %}
-                <li><a href="{{ path('app_wish_list_show', {slug: wishlist.slug}) }}">{{ wishlist.name }}</a></li>
+            {% for wishList in app.user.wishListsContribute %}
+            <li>
+                <a href="{{ path('app_wish_list_show', {slug: wishlist.slug}) }}">{{ wishlist.name }} </a>
+            </li>
             {% endfor %}
         </ul>
-    {% endif %}
-
-
-    <ul>
-    </ul>
+    </section>
 </div>
 {% endblock %}
