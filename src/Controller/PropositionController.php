@@ -33,7 +33,7 @@ class PropositionController extends AbstractController
         $proposition = new Proposition();
         $proposition->setWishList($wishList);
         $proposition->setCreator($this->getUser());
-        $proposition->setDone(false);
+        $proposition->setState("Created");
         $form = $this->createForm(PropositionType::class, $proposition);
         $form->handleRequest($request);
 
