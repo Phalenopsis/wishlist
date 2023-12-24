@@ -127,11 +127,17 @@ div.card{
     padding: 1rem;
     margin-bottom: 0.5rem;
 }
-.card.done{
+.card.Done{
     background: linear-gradient(red, darkred);
 }
-.card.not-done{
+.card.Created{
     background: linear-gradient(greenyellow, darkgreen);
+}
+.card.Rejected{
+    background: linear-gradient(lightslategray, darkslategray);
+}
+.card.Pending{
+    background: linear-gradient(pink, deeppink);
 }
 .card-content>ul>li{
     margin-bottom: 0.5rem;
