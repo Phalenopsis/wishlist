@@ -23,7 +23,7 @@
     <section>
         <h2>Les listes où vous avez été invité</h2>
         <ul>
-            {% for wishList in app.user.wishListsContribute %}
+            {% for wishlist in app.user.wishListsContribute %}
             <li>
                 <a href="{{ path('app_wish_list_show', {slug: wishlist.slug}) }}">{{ wishlist.name }} </a>
             </li>
