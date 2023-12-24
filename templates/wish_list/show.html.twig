@@ -3,55 +3,49 @@
 {% block title %}WishList{% endblock %}
 
 {% block body %}
+<h1>{{ wish_list.name }}</h1>
 
-    <div>
-        <h1>{{ wish_list.name }}</h1>
+    <section class="card">
         <h2>Tirage au sort</h2>
-        <a href="{{ path('app_random_proposition', {slug: wish_list.slug}) }}">Effectuer un tirage au sort</a>
+        <a href="{{ path('app_random_proposition', {slug: wish_list.slug}) }}" class="button">Effectuer un tirage au sort</a>
+    </section>
+
+    <section class="card">
         <h2>Etiquettes</h2>
         {% if wish_list.labels is not empty %}
             <ul>
             {% for label in wish_list.labels %}
-                <li style="background-color: {{ label.color }}">{{ label.name }}</li>
+                <li>{% include 'components/_label.html.twig' %}</li>
             {% endfor %}
             </ul>
         {% else %}
             Cette liste n'a pas encore d'étiquette
         {% endif %}
-        <a href="{{ path('app_label_new', {slug: wish_list.slug}) }}">Créer une nouvelle étiquette</a>
-        <hr>
+        <a href="{{ path('app_label_new', {slug: wish_list.slug}) }}" class="button">Créer une nouvelle étiquette</a>
+    </section>
 
+    <section class="card">
         <h2>Voeux</h2>
             {% if wish_list.propositions is not empty %}
-                <ul>
+                <div class="card-contenair">
+                    {% set counter = 0 %}
                     {% for proposition in wish_list.propositions %}
-                        <li>
-                            <ul>
-                                <li>{{ proposition.content }}</li>
-                                <li>{{ proposition.difficulty }}</li>
-                                {% if proposition.labels is not empty %}
-                                <li>
-                                    {% for label in proposition.labels %}
-                                        <span style="background-color: {{ label.color }}">{{ label.name }}</span>
-                                    {% endfor %}
-                                </li>
-
-                                {% endif %}
-                                <li>{% if proposition.done %}
-                                        plop
-                                    {% endif %}
-                                </li>
-                            </ul>
-                        </li>
+                            {% if proposition.creator == app.user %}
+                                {% include 'components/_proposition.html.twig' %}
+                            {% else %}
+                                {% set counter = counter + 1 %}
+                            {% endif %}
                     {% endfor %}
-                </ul>
+                </div>
+                <p>Il y a {{ counter }} voeux qui ont été fait par d'autres personnes.</p>
             {% else %}
-                Cette liste n'a pas encore d'invité
+                Cette liste n'a pas encore de proposition.
             {% endif %}
 
         <a href="{{ path('app_proposition_new', {slug: wish_list.slug}) }}">Créer une nouvelle proposition</a>
-        <hr>
+    </section>
 
+    <section  class="card">
         <h2>Invités</h2>
             {% if wish_list.contributors is not empty %}
                 <ul>
@@ -63,20 +57,11 @@
                 Cette liste n'a pas encore d'invité
             {% endif %}
         <a href="{{ path('app_wish_list_addfriend', {slug: wish_list.slug}) }}">Ajouter un invité</a>
-        <hr>
 
-    </div>
-    <table class="table">
-        <tbody>
+    </section>
 
-            <tr>
-                <th>Name</th>
-                <td>{{ wish_list.name }}</td>
-                <td></td>
-            </tr>
 
-        </tbody>
-    </table>
+
 
     <a href="{{ path('app_user') }}">back to user</a><br>
 
