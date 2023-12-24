@@ -1,11 +1,5 @@
 
-<div class="card card-content
-{% if proposition.done %}
-            done
-            {% else %}
-            not-done
-        {% endif %}
-">
+<div class="card card-content {{ proposition.state }}">
     <ul>
         <li>{{ proposition.content }}</li>
         <li>
