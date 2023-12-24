@@ -110,11 +110,14 @@ class WishListController extends AbstractController
     public function random(WishList $wishList, RandomPropositionService $randomService, EntityManagerInterface $entityManager): Response
     {
         $proposition = $randomService->getRandomProposition($wishList);
-        $proposition->setDone(true);
-        $entityManager->flush();
+        if ($proposition !== null) {
+            $proposition->setState('Pending');
+            $entityManager->flush();
+        }
 
         return $this->render('wish_list/random.html.twig', [
             'proposition' => $proposition,
+            'wishlist' => $wishList,
         ]);
     }
 }
