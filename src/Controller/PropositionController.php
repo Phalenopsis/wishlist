@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Proposition;
 use App\Entity\WishList;
+use App\Form\ChangeStateType;
 use App\Form\PropositionType;
 use App\Repository\PropositionRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -85,5 +86,23 @@ class PropositionController extends AbstractController
         }
 
         return $this->redirectToRoute('app_proposition_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/{id}/changestate', name: 'app_proposition_changestate')]
+    public function changeState(Request $request, Proposition $proposition, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(ChangeStateType::class, $proposition);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_wish_list_show', ['slug' => $proposition->getWishList()->getSlug()], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('proposition/change_state.html.twig', [
+            'proposition' => $proposition,
+            'form' => $form,
+        ]);
     }
 }
