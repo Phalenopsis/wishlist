@@ -21,10 +21,10 @@ class ChangeStateType extends AbstractType
         $builder
             ->add('state', ChoiceType::class, [
                 'choices' => [
-                    'Created' => 'Created',
-                    'Pending' => 'Pending',
-                    'Rejected' => 'Rejected',
-                    'Done' => 'Done'
+                    'Créé' => 'Created',
+                    'En attente de réalisation' => 'Pending',
+                    'Rejeté' => 'Rejected',
+                    'Réalisé' => 'Done'
                 ],
                 'multiple' => false,
                 'expanded' => true,
