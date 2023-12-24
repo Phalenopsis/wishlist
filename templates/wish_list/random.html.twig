@@ -9,24 +9,25 @@
     {% if proposition is null %}
         <p>Il n'est pas possible d'effectuer un tirage au sort</p>
     {% else %}
-        <p><strong>{{ proposition.content }}</strong></p>
+        {% include 'components/_proposition.html.twig' %}
+{#        <p><strong>{{ proposition.content }}</strong></p>#}
 
 
-            <h2>Difficulty</h2>
-            <div class="star">
-                {% for i in 1..5 %}
-                    {% if i in 1..(proposition.difficulty) %}
-                        <span class="yellow">{% include '_star_filled.html.twig' %}</span>
-                    {% else %}
-                        <span class="yellow">{% include '_star.html.twig' %}</span>
-                    {% endif %}
-                {% endfor %}
-            </div>
+{#            <h2>Difficulty</h2>#}
+{#            <div class="star">#}
+{#                {% for i in 1..5 %}#}
+{#                    {% if i in 1..(proposition.difficulty) %}#}
+{#                        <span class="yellow">{% include '_star_filled.html.twig' %}</span>#}
+{#                    {% else %}#}
+{#                        <span class="yellow">{% include '_star.html.twig' %}</span>#}
+{#                    {% endif %}#}
+{#                {% endfor %}#}
+{#            </div>#}
     {% endif %}
 
 
-    <a href="{{ path('app_wish_list_show', {slug: wishlist.slug}) }}">Retour à la liste</a>
+    <p><a href="{{ path('app_wish_list_show', {slug: wishlist.slug}) }}" class="button">Retour à la liste</a></p>
 
-    <a href="{{ path('app_user') }}">Retour à l'utilisateur</a>
+    <p><a href="{{ path('app_user') }}" class="button">Retour à l'utilisateur</a></p>
 
 {% endblock %}
