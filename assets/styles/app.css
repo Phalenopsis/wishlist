@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Voces");
 :root{
     --navbar-height: 40px;
+    --font-size: 1.2rem;
 }
 * {
     margin: 0;
@@ -12,6 +13,7 @@ body {
     background-color: skyblue;
     background: linear-gradient(180deg, #c938dc, #ecf802);
     background-size: cover;
+    font-size: var(--font-size);
 
 }
 nav{
@@ -72,6 +74,16 @@ a.button:visited
     padding: 0.25rem;
     text-decoration: none;
     border-radius: 5px;
+    color: black;
+    margin: 0.5rem 0;
+    transform: translateX(0);
+    transition-duration: 1s;
+    transition-property: filter, transform, background-color;
+}
+a.button:hover{
+    transform: translateX(0);
+    background: #caccef;
+
 }
 div.card{
     border: 1px solid black;
