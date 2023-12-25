@@ -3,11 +3,19 @@
     flex-direction: column;
     border: 1px solid black;
     border-radius: 10px;
+    padding: 0.5rem;
+    background: linear-gradient(whitesmoke, lightgray);
 }
 .comment{
     display: flex;
     flex-direction: column;
+    border: 1px solid dimgray;
+    border-radius: 8px;
+    background: linear-gradient(lightgray, dimgray);
+    margin-bottom: 0.5rem;
 }
-.comment.author{
+.comment-author{
     font-size: 1rem;
+    align-self: flex-end;
+    padding-right: 1rem;
 }
