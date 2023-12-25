@@ -7,5 +7,5 @@
 
     {{ include('label/_form.html.twig') }}
 
-    <a href="{{ path('app_label_index') }}">back to list</a>
+    <p><a href="{{ path('app_wish_list_show', {slug: label.whishList.slug}) }}" class="button">Retour à la liste</a></p>
 {% endblock %}
