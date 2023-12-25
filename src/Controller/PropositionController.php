@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
 use App\Entity\Proposition;
 use App\Entity\WishList;
 use App\Form\ChangeStateType;
+use App\Form\CommentType;
 use App\Form\PropositionType;
 use App\Repository\PropositionRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -101,6 +103,28 @@ class PropositionController extends AbstractController
         }
 
         return $this->render('proposition/change_state.html.twig', [
+            'proposition' => $proposition,
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/{id}/addcomment', name: 'app_add_comment')]
+    public function addComment(Request $request, Proposition $proposition, EntityManagerInterface $entityManager): Response
+    {
+        $comment = new Comment();
+        $comment->setProposition($proposition);
+        $comment->setAuthor($this->getUser());
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($comment);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_proposition_show', ['id' => $proposition->getId()], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('comment/new.html.twig', [
             'proposition' => $proposition,
             'form' => $form,
         ]);
