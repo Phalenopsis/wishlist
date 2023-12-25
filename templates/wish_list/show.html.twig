@@ -19,7 +19,7 @@
             {% endfor %}
             </ul>
         {% else %}
-            Cette liste n'a pas encore d'étiquette
+            <p>Cette liste n'a pas encore d'étiquette</p>
         {% endif %}
         <a href="{{ path('app_label_new', {slug: wish_list.slug}) }}" class="button">Créer une nouvelle étiquette</a>
     </section>
@@ -39,7 +39,7 @@
                 </div>
                 <p>Il y a {{ counter }} voeux qui sont encore à découvrir.</p>
             {% else %}
-                Cette liste n'a pas encore de proposition.
+                <p>Cette liste n'a pas encore de proposition.</p>
             {% endif %}
 
         <p><a href="{{ path('app_proposition_new', {slug: wish_list.slug}) }}" class="button">Créer une nouvelle proposition</a></p>
@@ -54,7 +54,7 @@
                     {% endfor %}
                 </ul>
             {% else %}
-                Cette liste n'a pas encore d'invité
+                <p>Cette liste n'a pas encore d'invité</p>
             {% endif %}
         <p><a href="{{ path('app_wish_list_addfriend', {slug: wish_list.slug}) }}" class="button">Ajouter un invité</a></p>
 
