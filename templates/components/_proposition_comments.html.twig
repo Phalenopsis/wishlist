@@ -1,0 +1,11 @@
+<div class="comments">
+    {% if proposition.comments is not empty %}
+
+            {% for comment in proposition.comments %}
+                <li>{{ comment.text }}</li>
+            {% endfor %}
+
+    {% else %}
+        <p>Cette proposition n'a pas encore reçu de commentaires</p>
+    {% endif %}
+</div>
