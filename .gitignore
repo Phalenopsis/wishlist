@@ -33,6 +33,9 @@ yarn-error.log
 
 nicosmaker.php
 
-/.idea/
+/.idea/*
 /.idea/wish-list.iml
+.idea/*
+.idea
+.idea/wish-list.iml
 
