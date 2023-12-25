@@ -7,5 +7,6 @@
 
     {{ include('proposition/_form.html.twig') }}
 
-    <a href="{{ path('app_proposition_index') }}">back to list</a>
+    <p><a href="{{ path('app_wish_list_show', {slug: proposition.wishlist.slug}) }}" class="button">Retour à la liste</a></p>
+
 {% endblock %}
