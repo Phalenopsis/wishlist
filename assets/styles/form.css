@@ -2,15 +2,23 @@ form{
     display: flex;
     flex-direction: column;
 }
+
 form input[type=text], form input[type=password]{
     width: 15rem;
     border-radius: 10px;
     padding-left: 10px;
     height: 2rem;
+    font-size: var(--font-size);
+}
+form textarea{
+    font-size: var(--font-size);
+
 }
 form button{
-    width: 5rem;
+    font-size: var(--font-size);
+    min-width: 5rem;
     margin: 1rem auto;
+    padding: 0.5rem;
     border-radius: 10px;
     filter: drop-shadow(6px 5px 2px rgb(0 0 0 / 0.4));
     transform: translateX(0);
