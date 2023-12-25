@@ -2,7 +2,11 @@
     {% if proposition.comments is not empty %}
 
             {% for comment in proposition.comments %}
-                <li>{{ comment.text }}</li>
+                <div class="comment">
+                    <div class="comment-content">{{ comment.text }}</div>
+                    <div class="comment-author">{{ comment.author.username }}</div>
+
+                </div>
             {% endfor %}
 
     {% else %}
