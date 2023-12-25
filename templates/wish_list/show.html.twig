@@ -19,13 +19,34 @@
             {% endfor %}
             </ul>
         {% else %}
-            Cette liste n'a pas encore d'étiquette
+            <p>Cette liste n'a pas encore d'étiquette</p>
         {% endif %}
         <a href="{{ path('app_label_new', {slug: wish_list.slug}) }}" class="button">Créer une nouvelle étiquette</a>
     </section>
 
     <section class="card">
-        <h2>Voeux</h2>
+        <h2> Les voeux dévoilés</h2>
+        {% if wish_list.propositions is not empty %}
+            <div class="card-contenair">
+                {% set counter = 0 %}
+                {% for proposition in wish_list.propositions %}
+                    {% if proposition.state != 'Created' %}
+                        <a href="{{ path('app_proposition_show', {id: proposition.id}) }}" class="card-link">{% include 'components/_proposition.html.twig' %}</a>
+                    {% else %}
+                        {% set counter = counter + 1 %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <p>Il y a {{ counter }} voeux qui sont encore à découvrir.</p>
+        {% else %}
+            <p>Cette liste n'a pas encore de voeux dévoilés.</p>
+        {% endif %}
+    </section>
+
+
+    <section class="card">
+        <h2> Vos voeux</h2>
+        <p><a href="{{ path('app_proposition_new', {slug: wish_list.slug}) }}" class="button">Créer une nouvelle proposition</a></p>
             {% if wish_list.propositions is not empty %}
                 <div class="card-contenair">
                     {% set counter = 0 %}
@@ -39,10 +60,8 @@
                 </div>
                 <p>Il y a {{ counter }} voeux qui sont encore à découvrir.</p>
             {% else %}
-                Cette liste n'a pas encore de proposition.
+                <p>Cette liste n'a pas encore de proposition.</p>
             {% endif %}
-
-        <p><a href="{{ path('app_proposition_new', {slug: wish_list.slug}) }}" class="button">Créer une nouvelle proposition</a></p>
     </section>
 
     <section  class="card">
@@ -54,13 +73,10 @@
                     {% endfor %}
                 </ul>
             {% else %}
-                Cette liste n'a pas encore d'invité
+                <p>Cette liste n'a pas encore d'invité</p>
             {% endif %}
         <p><a href="{{ path('app_wish_list_addfriend', {slug: wish_list.slug}) }}" class="button">Ajouter un invité</a></p>
-
     </section>
-
-
 
 
     <p><a href="{{ path('app_user') }}" class="button">Retour à votre profil</a></p>
