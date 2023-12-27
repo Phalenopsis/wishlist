@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Comment;
 use App\Entity\Proposition;
 use App\Entity\WishList;
+use App\Form\ChangeLabelsType;
 use App\Form\ChangeStateType;
 use App\Form\CommentType;
 use App\Form\PropositionType;
@@ -125,6 +126,24 @@ class PropositionController extends AbstractController
         }
 
         return $this->render('comment/new.html.twig', [
+            'proposition' => $proposition,
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/{id}/changelabels', name: 'app_proposition_changelabels')]
+    public function changeLabels(Request $request, Proposition $proposition, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(ChangeLabelsType::class, $proposition);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_wish_list_show', ['slug' => $proposition->getWishList()->getSlug()], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('proposition/change_labels.html.twig', [
             'proposition' => $proposition,
             'form' => $form,
         ]);
