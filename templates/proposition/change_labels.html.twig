@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Changer les étiquettes{% endblock %}
+
+{% block body %}
+    <h1>Edit Proposition</h1>
+    {{ include('components/_proposition.html.twig') }}
+
+    {{ include('proposition/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_wish_list_show', {slug: proposition.wishlist.slug}) }}">back to list</a>
+
+    {#    <a href="{{ path('app_proposition_index') }}">back to list</a>#}
+
+    {#    {{ include('proposition/_delete_form.html.twig') }}#}
+{% endblock %}
