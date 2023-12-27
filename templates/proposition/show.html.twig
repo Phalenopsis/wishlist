@@ -9,6 +9,8 @@
 
     {% include 'components/_proposition_comments.html.twig' %}
 
+    <p><a href="{{ path('app_proposition_changelabels', {id: proposition.id}) }}" class="button">Changer les étiquettes</a></p>
+
     <p><a href="{{ path('app_proposition_changestate', {id: proposition.id}) }}" class="button">Changer l'état</a></p>
 
     <p><a href="{{ path('app_add_comment', {id: proposition.id}) }}" class="button">Ajouter un commentaire</a></p>
