@@ -7,7 +7,7 @@
 
     {{ include('label/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_label_index') }}">back to list</a>
+    <a href="{{ path('app_edit_labels', {slug: label.WhishList.slug}) }}">Retour à la liste des labels</a>
 
     {{ include('label/_delete_form.html.twig') }}
 {% endblock %}
