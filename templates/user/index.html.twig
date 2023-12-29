@@ -9,9 +9,8 @@
     <h1>Hello {{ app.user.username }}!</h1>
     <section class="card">
         <h2>Vos listes</h2>
-        {% if app.user.wishLists is empty %}
-            <p><a href="{{ path('app_wish_list_new') }}" class="button">Créer votre première liste de souhaits</a></p>
-        {%  else %}
+        <p><a href="{{ path('app_wish_list_new') }}" class="button">Créer une liste de souhaits</a></p>
+        {% if app.user.wishLists is not empty %}
             <ul>
                 {% for wishlist in app.user.wishlists %}
                     <li><a href="{{ path('app_wish_list_show', {slug: wishlist.slug}) }}">{{ wishlist.name }}</a></li>
