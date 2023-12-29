@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit WishList Labels{% endblock %}
+
+{% block body %}
+    <h1>{{ wishlist.name }}</h1>
+    <ul>
+        {% for label in wishlist.labels %}
+            <li>{% include 'components/_label.html.twig' %} - <a href="{{ path('app_label_edit', {id: label.id}) }}">Editer cette étiquette</a></li>
+        {% endfor %}
+    </ul>
+
+
+    {% include 'components/_return_to_wishlist.html.twig' %}
+
+
+{% endblock %}
