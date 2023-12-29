@@ -120,4 +120,12 @@ class WishListController extends AbstractController
             'wishlist' => $wishList,
         ]);
     }
+
+    #[Route('/{slug}/editlabels', name: 'app_edit_labels')]
+    public function editLabels(WishList $wishList): Response
+    {
+        return $this->render('wish_list/editlabels.html.twig', [
+           'wishlist' => $wishList,
+        ]);
+    }
 }
