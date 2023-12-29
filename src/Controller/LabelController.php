@@ -16,14 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/label')]
 class LabelController extends AbstractController
 {
-    #[Route('/', name: 'app_label_index', methods: ['GET'])]
-    public function index(LabelRepository $labelRepository): Response
-    {
-        return $this->render('label/index.html.twig', [
-            'labels' => $labelRepository->findAll(),
-        ]);
-    }
-
     #[Route('{slug}/new', name: 'app_label_new', methods: ['GET', 'POST'])]
     public function new(
         #[MapEntity(mapping: ['slug' => 'slug'])] WishList $wishList,
@@ -35,27 +27,15 @@ class LabelController extends AbstractController
         $form = $this->createForm(LabelType::class, $label);
         $form->handleRequest($request);
 
-
         if ($form->isSubmitted() && $form->isValid()) {
-
             $entityManager->persist($label);
             $entityManager->flush();
-
             return $this->redirectToRoute('app_wish_list_show', ['slug' => $wishList->getSlug()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('label/new.html.twig', [
             'label' => $label,
             'form' => $form,
-
-        ]);
-    }
-
-    #[Route('/{id}', name: 'app_label_show', methods: ['GET'])]
-    public function show(Label $label): Response
-    {
-        return $this->render('label/show.html.twig', [
-            'label' => $label,
         ]);
     }
 
@@ -68,7 +48,7 @@ class LabelController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_label_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_wish_list_show', ['slug' => $label->getWhishList()->getSlug()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('label/edit.html.twig', [
@@ -85,6 +65,6 @@ class LabelController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_label_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_wish_list_show', ['slug' => $label->getWhishList()->getSlug()], Response::HTTP_SEE_OTHER);
     }
 }
