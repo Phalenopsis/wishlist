@@ -82,10 +82,14 @@ a.button:visited
     transition-duration: 1s;
     transition-property: filter, transform, background-color;
 }
+a.button.comment{
+    display: block;
+    width: fit-content;
+    margin: 0.5rem 0 0.5rem auto;
+}
 a.button:hover{
     transform: translateX(0);
     background: #caccef;
-
 }
 div.card{
     position: relative;
