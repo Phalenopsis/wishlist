@@ -8,5 +8,6 @@
 import './styles/app.css'
 import './styles/form.css'
 import './styles/comment.css'
+import './styles/aside.css'
 
-console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉')
+//console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉')
