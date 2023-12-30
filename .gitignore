@@ -39,3 +39,4 @@ nicosmaker.php
 .idea
 .idea/wish-list.iml
 
+/src/DataFixtures
