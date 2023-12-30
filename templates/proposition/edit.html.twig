@@ -1,13 +1,16 @@
 {% extends 'base.html.twig' %}
+{% set wishlist = proposition.WishList %}
 
 {% block title %}Edit Proposition{% endblock %}
 
 {% block body %}
-    <h1>Edit Proposition</h1>
+    <main>
+        <h1>Edit Proposition</h1>
 
-    {{ include('proposition/_form.html.twig', {'button_label': 'Update'}) }}
+        {{ include('proposition/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_proposition_index') }}">back to list</a>
+        {{ include('components/_return_to_wishlist.html.twig') }}
 
-    {{ include('proposition/_delete_form.html.twig') }}
+        {{ include('proposition/_delete_form.html.twig') }}
+    </main>
 {% endblock %}
