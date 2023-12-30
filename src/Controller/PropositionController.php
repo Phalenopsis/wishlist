@@ -20,14 +20,6 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/proposition')]
 class PropositionController extends AbstractController
 {
-    #[Route('/', name: 'app_proposition_index', methods: ['GET'])]
-    public function index(PropositionRepository $propositionRepository): Response
-    {
-        return $this->render('proposition/index.html.twig', [
-            'propositions' => $propositionRepository->findAll(),
-        ]);
-    }
-
     #[Route('{slug}/new', name: 'app_proposition_new', methods: ['GET', 'POST'])]
     public function new(
         #[MapEntity(mapping: ['slug' => 'slug'])] WishList $wishList,
