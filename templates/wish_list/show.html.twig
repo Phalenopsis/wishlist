@@ -7,13 +7,18 @@
 
     <section class="card">
         <h2>Tirage au sort</h2>
+        {% if app.user == wish_list.creator %}
+            <div class="up right card-infos"><a href="{{ path('app_wish_list_edit', {slug: wish_list.slug}) }}">Editer la liste</a></div>
+        {% endif %}
         <a href="{{ path('app_random_proposition', {slug: wish_list.slug}) }}" class="button">Effectuer un tirage au sort</a>
     </section>
 
     <section class="card">
         <h2>Etiquettes</h2>
         {% if wish_list.labels is not empty %}
-            <div class="up right card-infos"><a href="{{ path('app_edit_labels', {slug: wish_list.slug}) }}">Editer les labels</a></div>
+            {% if app.user == wish_list.creator %}
+                <div class="up right card-infos"><a href="{{ path('app_edit_labels', {slug: wish_list.slug}) }}">Editer les étiquettes</a></div>
+            {% endif %}
             <ul>
             {% for label in wish_list.labels %}
                 <li>{% include 'components/_label.html.twig' %}</li>
