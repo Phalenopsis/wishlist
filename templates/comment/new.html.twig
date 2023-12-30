@@ -3,6 +3,7 @@
 {% block title %}Proposition{% endblock %}
 
 {% block body %}
+    <main>
     <h1>Proposition</h1>
 
     {% include 'components/_proposition.html.twig' %}
@@ -21,4 +22,5 @@
     {#    <a href="{{ path('app_proposition_edit', {'id': proposition.id}) }}">edit</a>#}
 
     {#    {{ include('proposition/_delete_form.html.twig') }}#}
+    </main>
 {% endblock %}

@@ -3,9 +3,11 @@
 {% block title %}New WishList{% endblock %}
 
 {% block body %}
-    <h1>Create new WishList</h1>
+    <main>
+        <h1>Create new WishList</h1>
 
-    {{ include('wish_list/_form.html.twig') }}
+        {{ include('wish_list/_form.html.twig') }}
 
-    <a href="{{ path('app_wish_list_index') }}">back to list</a>
+        <a href="{{ path('app_wish_list_index') }}">back to list</a>
+    </main>
 {% endblock %}

@@ -3,31 +3,31 @@
 {% block title %}Hello UserController!{% endblock %}
 
 {% block body %}
+    <main>
+        <div>
+            <h1>Hello {{ app.user.username }}!</h1>
+            <section class="card">
+                <h2>Vos listes</h2>
+                <p><a href="{{ path('app_wish_list_new') }}" class="button">Créer une liste de souhaits</a></p>
+                {% if app.user.wishLists is not empty %}
+                    <ul>
+                        {% for wishlist in app.user.wishlists %}
+                            <li><a href="{{ path('app_wish_list_show', {slug: wishlist.slug}) }}">{{ wishlist.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </section>
 
-
-<div>
-    <h1>Hello {{ app.user.username }}!</h1>
-    <section class="card">
-        <h2>Vos listes</h2>
-        <p><a href="{{ path('app_wish_list_new') }}" class="button">Créer une liste de souhaits</a></p>
-        {% if app.user.wishLists is not empty %}
-            <ul>
-                {% for wishlist in app.user.wishlists %}
-                    <li><a href="{{ path('app_wish_list_show', {slug: wishlist.slug}) }}">{{ wishlist.name }}</a></li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </section>
-
-    <section class="card">
-        <h2>Les listes où vous avez été invité</h2>
-        <ul>
-            {% for wishlist in app.user.wishListsContribute %}
-            <li>
-                <a href="{{ path('app_wish_list_show', {slug: wishlist.slug}) }}">{{ wishlist.name }} </a>
-            </li>
-            {% endfor %}
-        </ul>
-    </section>
-</div>
+            <section class="card">
+                <h2>Les listes où vous avez été invité</h2>
+                <ul>
+                    {% for wishlist in app.user.wishListsContribute %}
+                    <li>
+                        <a href="{{ path('app_wish_list_show', {slug: wishlist.slug}) }}">{{ wishlist.name }} </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </section>
+        </div>
+    </main>
 {% endblock %}

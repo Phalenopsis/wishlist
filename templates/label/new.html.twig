@@ -3,9 +3,11 @@
 {% block title %}New Label{% endblock %}
 
 {% block body %}
-    <h1>Create new Label</h1>
+    <main>
+        <h1>Create new Label</h1>
 
-    {{ include('label/_form.html.twig') }}
+        {{ include('label/_form.html.twig') }}
 
-    <p><a href="{{ path('app_wish_list_show', {slug: label.whishList.slug}) }}" class="button">Retour à la liste</a></p>
+        <p><a href="{{ path('app_wish_list_show', {slug: label.whishList.slug}) }}" class="button">Retour à la liste</a></p>
+    </main>
 {% endblock %}

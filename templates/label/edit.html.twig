@@ -3,11 +3,13 @@
 {% block title %}Edit Label{% endblock %}
 
 {% block body %}
-    <h1>Edit Label</h1>
+    <main>
+        <h1>Edit Label</h1>
 
-    {{ include('label/_form.html.twig', {'button_label': 'Update'}) }}
+        {{ include('label/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_edit_labels', {slug: label.WhishList.slug}) }}">Retour à la liste des labels</a>
+        <a href="{{ path('app_edit_labels', {slug: label.WhishList.slug}) }}">Retour à la liste des labels</a>
 
-    {{ include('label/_delete_form.html.twig') }}
+        {{ include('label/_delete_form.html.twig') }}
+    </main>
 {% endblock %}

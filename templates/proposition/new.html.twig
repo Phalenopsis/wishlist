@@ -3,10 +3,12 @@
 {% block title %}New Proposition{% endblock %}
 
 {% block body %}
-    <h1>Create new Proposition</h1>
+    <main>
+        <h1>Create new Proposition</h1>
 
-    {{ include('proposition/_form.html.twig') }}
+        {{ include('proposition/_form.html.twig') }}
 
-    <p><a href="{{ path('app_wish_list_show', {slug: proposition.wishlist.slug}) }}" class="button">Retour à la liste</a></p>
+        <p><a href="{{ path('app_wish_list_show', {slug: proposition.wishlist.slug}) }}" class="button">Retour à la liste</a></p>
+    </main>
 
 {% endblock %}

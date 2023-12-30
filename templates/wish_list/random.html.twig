@@ -3,31 +3,21 @@
 {% block title %}Proposition{% endblock %}
 
 {% block body %}
-    <h1>Tirage au sort</h1>
+    <main>
+        <h1>Tirage au sort</h1>
 
-    <h2>Et la proposition tirée au sort est :</h2>
-    {% if proposition is null %}
-        <p>Il n'est pas possible d'effectuer un tirage au sort</p>
-    {% else %}
-        {% include 'components/_proposition.html.twig' %}
-{#        <p><strong>{{ proposition.content }}</strong></p>#}
+        <h2>Et la proposition tirée au sort est :</h2>
+        {% if proposition is null %}
+            <p>Il n'est pas possible d'effectuer un tirage au sort</p>
+        {% else %}
+            {% include 'components/_proposition.html.twig' %}
 
-
-{#            <h2>Difficulty</h2>#}
-{#            <div class="star">#}
-{#                {% for i in 1..5 %}#}
-{#                    {% if i in 1..(proposition.difficulty) %}#}
-{#                        <span class="yellow">{% include '_star_filled.html.twig' %}</span>#}
-{#                    {% else %}#}
-{#                        <span class="yellow">{% include '_star.html.twig' %}</span>#}
-{#                    {% endif %}#}
-{#                {% endfor %}#}
-{#            </div>#}
-    {% endif %}
+        {% endif %}
 
 
-    <p><a href="{{ path('app_wish_list_show', {slug: wishlist.slug}) }}" class="button">Retour à la liste</a></p>
+        <p><a href="{{ path('app_wish_list_show', {slug: wishlist.slug}) }}" class="button">Retour à la liste</a></p>
 
-    <p><a href="{{ path('app_user') }}" class="button">Retour à l'utilisateur</a></p>
+        <p><a href="{{ path('app_user') }}" class="button">Retour à l'utilisateur</a></p>
+    </main>
 
 {% endblock %}
