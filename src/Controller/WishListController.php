@@ -17,14 +17,6 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 #[Route('/wishlist')]
 class WishListController extends AbstractController
 {
-    #[Route('/', name: 'app_wish_list_index', methods: ['GET'])]
-    public function index(WishListRepository $wishListRepository): Response
-    {
-        return $this->render('wish_list/index.html.twig', [
-            'wish_lists' => $wishListRepository->findAll(),
-        ]);
-    }
-
     #[Route('/new', name: 'app_wish_list_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
