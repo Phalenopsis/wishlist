@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Wish list{% endblock %}
+
+{% block body %}
+    <main>
+        <h1>Whish List, and your dreams become true (or not)</h1>
+
+        <p><a href="{{ path('app_home') }}">Retour à l'accueil</a></p>
+        <p><a href="{{ path('app_home_test_doctrine') }}">Ceci est un test vers une page dynamique</a></p>
+    </main>
+{% endblock %}
