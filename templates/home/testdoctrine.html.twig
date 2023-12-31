@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Wish list{% endblock %}
+
+{% block body %}
+    <main>
+        <h1>Whish List, and your dreams become true (or not)</h1>
+
+        <ul>
+        {% for user in users %}
+            <li>{{ user.username }}</li>
+        {% endfor %}
+        </ul>
+
+        <p><a href="{{ path('app_home') }}">Home</a></p>
+        <p><a href="{{ path('app_home_test') }}">Ceci est un test basique</a></p>
+    </main>
+{% endblock %}
