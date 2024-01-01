@@ -1,6 +1,17 @@
+
 .with-aside{
     display: flex;
 
+    .main{
+        margin: 0 2rem;
+    }
+    .aside-left{
+        margin-left: 0.5rem;
+    }
+    
+    @media screen and (width > 576px) {
+        
+    }
     .main{
         margin: 0 5rem;
         min-width: 40vw;
