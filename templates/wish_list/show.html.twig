@@ -37,7 +37,7 @@
                     <div class="card-contenair">
                         {% set counter = 0 %}
                         {% for proposition in wish_list.propositions %}
-                            {% if proposition.state != 'Created' %}
+                            {% if proposition.state == 'Pending' %}
                                 <a href="{{ path('app_proposition_show', {id: proposition.id}) }}" class="card-link">{% include 'components/_proposition.html.twig' %}</a>
                             {% else %}
                                 {% set counter = counter + 1 %}
@@ -50,6 +50,35 @@
                 {% endif %}
             </section>
 
+            <section class="card">
+                <h2> Les voeux réalisés</h2>
+                {% if wish_list.propositions is not empty %}
+                    <div class="card-contenair">
+                        {% for proposition in wish_list.propositions %}
+                            {% if proposition.state == 'Done' %}
+                                <a href="{{ path('app_proposition_show', {id: proposition.id}) }}" class="card-link">{% include 'components/_proposition.html.twig' %}</a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p>Cette liste n'a pas encore de voeux réalisés.</p>
+                {% endif %}
+            </section>
+
+            <section class="card">
+                <h2>Les voeux rejetés</h2>
+                {% if wish_list.propositions is not empty %}
+                    <div class="card-contenair">
+                        {% for proposition in wish_list.propositions %}
+                            {% if proposition.state == 'Rejected' %}
+                                <a href="{{ path('app_proposition_show', {id: proposition.id}) }}" class="card-link">{% include 'components/_proposition.html.twig' %}</a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p>Cette liste n'a pas encore de voeux rejetés.</p>
+                {% endif %}
+            </section>
 
             <section class="card">
                 <h2> Vos voeux</h2>
