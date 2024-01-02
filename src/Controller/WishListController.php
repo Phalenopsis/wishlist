@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\WishList;
 use App\Form\AddContributorType;
 use App\Form\WishListType;
+use App\Repository\CommentRepository;
 use App\Repository\WishListRepository;
 use App\Service\RandomPropositionService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -40,13 +41,15 @@ class WishListController extends AbstractController
     }
 
     #[Route('/{slug}', name: 'app_wish_list_show', methods: ['GET'])]
-    public function show(WishList $wishList): Response
+    public function show(WishList $wishList, CommentRepository $commentRepository): Response
     {
         if(!($wishList->getCreator() === $this->getUser() || $wishList->getContributors()->contains($this->getUser())) ){
             throw $this->createAccessDeniedException('Vous n\'avez pas accès à cette page !');
         }
+        $comments = $commentRepository->getLastComments($wishList);
         return $this->render('wish_list/show.html.twig', [
             'wish_list' => $wishList,
+            'comments' => $comments,
         ]);
     }
 
