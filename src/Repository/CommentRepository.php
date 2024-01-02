@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Comment;
+use App\Entity\WishList;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -19,6 +20,19 @@ class CommentRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Comment::class);
+    }
+
+    public function getLastComments(WishList $wishList)
+    {
+        return $this->createQueryBuilder('c')
+            ->join('c.proposition', 'p')
+            ->where('p.wish_list = :wishlist')
+            ->setParameter('wishlist', $wishList)
+            ->orderBy('c.id', 'DESC')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult();
+
     }
 
 //    /**
