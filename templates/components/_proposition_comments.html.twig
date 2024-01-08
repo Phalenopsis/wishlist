@@ -3,7 +3,7 @@
 
             {% for comment in proposition.comments %}
                 <div class="comment">
-                    <div class="comment-content">{{ comment.text }}</div>
+                    <div class="comment-content">{{ comment.text|nl2br }}</div>
                     <div class="comment-author">{{ comment.author.username }}</div>
 
                 </div>

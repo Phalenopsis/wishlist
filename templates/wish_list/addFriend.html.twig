@@ -8,7 +8,7 @@
 
         {{ include('wish_list/_form.html.twig', {'button_label': 'Update'}) }}
 
-        <a href="{{ path('app_wish_list_index') }}">back to list</a>
+        <p><a href="{{ path('app_wish_list_show', {slug: wish_list.slug}) }}" class="button">Retour à la liste</a></p>
 
     {#    {{ include('wish_list/_delete_form.html.twig') }}#}
     </main>

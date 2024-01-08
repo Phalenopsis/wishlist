@@ -3,6 +3,9 @@
     --navbar-height: 40px;
     --font-size: 1.2rem;
 }
+@media screen and (width > 576px) {
+    --font-size: 1.2rem;
+}
 * {
     margin: 0;
     padding: 0;
@@ -24,10 +27,15 @@ nav{
     align-items: center;
     padding-right: 1rem;
 }
-main{
+
+main {
+    margin: 0 2rem;
     min-height: calc(100vh - var(--navbar-height));
-    margin: 0 20%;
+    @media screen and (width > 576px) {
+        margin: 0 20%;
+    }
 }
+
 .yellow{
     color: yellow;
 }

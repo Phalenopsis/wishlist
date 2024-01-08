@@ -1,7 +1,7 @@
 
 <div class="card card-content {{ proposition.state }}">
     <ul>
-        <li>{{ proposition.content }}</li>
+        <li>{{ proposition.content|nl2br }}</li>
         <li>
             {% if proposition.labels is not empty %}
                     {% for label in proposition.labels %}

@@ -1,12 +1,38 @@
+
 .with-aside{
     display: flex;
 
     .main{
-        margin: 0 5rem;
-        min-width: 40vw;
+        margin: 0 2rem;
+    }
+    .aside-left{
+        margin-left: 0.5rem;
+    }
+    
+    @media screen and (width > 576px) {
+        .main{
+            margin: 0 5rem;
+            min-width: 40vw;
+        }
+
+        .aside-left{
+            margin: 1rem;
+            min-width: 30vw;
+            .aside-left-ul{
+                list-style: none;
+
+                .aside-left-ul-a{
+                    text-decoration: none;
+                }
+            }
+
+            .comment{
+                margin-left: 2rem;
+            }
+            .comment::before{
+                content: url("../images/_return_arrow_right.svg");
+            }
+        }
     }
 
-    .aside-left{
-        margin: 1rem;
-    }
 }
